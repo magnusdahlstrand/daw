@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prototypes</title>
+<link rel="stylesheet" href="../prototypes.css">
+</head>
+<body>
+
+<h2><span class="symbol">𝄆 </span>Press spacebar to start recording,</h2>
+<h2>press once more to save the file<span class="symbol"> 𝄇</span></h2>
+<script src="./event-bus.js"></script>
+<script>
+	window.DAW = new EventBus();
+</script>
+<script src="./list-devices.js"></script>
+<script src="./record.js"></script>
+<script>
+	DAW.on('devices:ready', record);
+
+	async function record() {
+		const stream = await DAW.record();
+	}
+</script>
+</body>
